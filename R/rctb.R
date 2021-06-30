@@ -27,7 +27,7 @@ rctb <- function(data, ...){
   opts_theme <- opts$theme
 
   # format hyperlinks
-  hyperlinks <- get_hyperlink_function(opts = opts)
+  hyperlinks <- get_hyperlink_function(opts = opts, data = data)
   opts_table$defaultColDef <- reactable::colDef(cell = hyperlinks)
 
   # create extra styles for reactable

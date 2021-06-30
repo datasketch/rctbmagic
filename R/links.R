@@ -5,7 +5,7 @@
 #' @param opts Options from dsvizopts
 #'
 #' @return Function passed to reactable cells
-get_hyperlink_function <- function(opts){
+get_hyperlink_function <- function(opts, data){
 
   link_style <- create_link_style(opts_theme = opts$theme)
 

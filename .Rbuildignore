@@ -1,2 +1,5 @@
+^renv$
+^renv\.lock$
 ^rctbmagic\.Rproj$
 ^\.Rproj\.user$
+^README\.Rmd$

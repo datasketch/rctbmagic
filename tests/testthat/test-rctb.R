@@ -56,6 +56,7 @@ test_that("rctb works with opts", {
 
   tbl <- do.call(rctb, list(data, opts))
   attribs <- tbl$x$tag$children[[1]]$attribs
+  name <- tbl$x$tag$children[[1]]$name
 
   data <- jsonlite::toJSON(data, dataframe = "columns", rownames = FALSE)
   columns <- list(
@@ -89,6 +90,7 @@ test_that("rctb works with opts", {
     theme = expected_theme,
     dataKey = digest::digest(list(data, columns))
   )
+  expect_equal(name, "Reactable")
   expect_equal(attribs, expected)
   expect_equal(tbl$width, "auto")
   expect_equal(tbl$height, "auto")
@@ -108,6 +110,7 @@ test_that("rctb works with extra elements", {
 
   tbl <- do.call(rctb, list(data, opts))
   attribs <- tbl$x$tag$children[[3]]$attribs
+  name <- tbl$x$tag$children[[3]]$name
 
   data <- jsonlite::toJSON(data, dataframe = "columns", rownames = FALSE)
   columns <- list(
@@ -142,6 +145,7 @@ test_that("rctb works with extra elements", {
     theme = expected_theme,
     dataKey = digest::digest(list(data, columns))
   )
+  expect_equal(name, "Reactable")
   expect_equal(attribs, expected)
   expect_equal(tbl$width, "auto")
   expect_equal(tbl$height, "auto")
@@ -208,7 +212,27 @@ test_that("extra elements created correctly", {
 test_that("import google fonts", {
 
   data <- data.frame(x = 1, y = "b", stringsAsFactors = FALSE)
-  tbl <- do.call(rctb, list(data, opts))
+  tbl <- rctb(data)
 
+  expected_import <- "@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans');"
+  import <- tbl$x$tag$children[[3]]$children[[1]]
+
+  expect_equal(import, expected_import)
+
+})
+
+test_that("style tags", {
+
+  data <- data.frame(x = 1, y = "b", stringsAsFactors = FALSE)
+  tbl <- rctb(data)
+
+  elementStyles <- create_element_styles()
+
+  expected_styles <- paste0(
+    "#reactable-title {",elementStyles$titleStyle,"} #reactable-subtitle {",elementStyles$subtitleStyle,"} #reactable-caption {",elementStyles$captionStyle,"} #reactable-logo img {",elementStyles$logoStyle,"}")
+
+  styles <- tbl$x$tag$children[[4]]$children[[1]]
+
+  expect_equal(styles, expected_styles)
 
 })

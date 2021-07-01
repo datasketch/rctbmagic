@@ -12,7 +12,7 @@ test_that("rctb works without opts", {
   )
 
   expected_opts <- dsvizopts::merge_dsviz_options()
-  expected_theme <- list(stripedColor = expected_opts$theme$zebra_stripe2,
+  expected_theme <- list(stripedColor = expected_opts$theme$zebra_stripe_color,
                          style = list(fontFamily = expected_opts$theme$cell_text_family,
                                       fontSize = expected_opts$theme$cell_text_size,
                                       fontWeight = expected_opts$theme$cell_text_weight,
@@ -51,7 +51,7 @@ test_that("rctb works with opts", {
   org_name <- "public"
   data <- data.frame(x = 1, y = "b", stringsAsFactors = FALSE)
   opts <- dsthemer::dsthemer_get(org_name)
-  opts$zebra_stripe2 <- "#ffffff"
+  opts$zebra_stripe_color <- "#ffffff"
   opts$striped <- FALSE
 
   tbl <- do.call(rctb, list(data, opts))
@@ -119,7 +119,7 @@ test_that("rctb works with extra elements", {
   )
 
   expected_opts <- dsvizopts::merge_dsviz_options()
-  expected_theme <- list(stripedColor = expected_opts$theme$zebra_stripe2,
+  expected_theme <- list(stripedColor = expected_opts$theme$zebra_stripe_color,
                          style = list(fontFamily = expected_opts$theme$cell_text_family,
                                       fontSize = expected_opts$theme$cell_text_size,
                                       fontWeight = expected_opts$theme$cell_text_weight,

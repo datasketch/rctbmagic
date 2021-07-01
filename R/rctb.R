@@ -37,7 +37,12 @@ rctb <- function(data, ...){
   elementStyles <- create_element_styles(opts_theme = opts_theme)
 
   # get logo as html img
-  logo <- get_html_logo(opts_theme = opts_theme)
+
+  logo <- NULL
+  if(opts_theme$branding_include){
+    logo <- get_html_logo(opts_theme = opts_theme)
+    logo <- list(logo)
+  }
 
   # get google fonts needed for import
   fonts <- get_font_names(opts_theme = opts_theme)
@@ -50,7 +55,7 @@ rctb <- function(data, ...){
               title = opts$title$title,
               subtitle = opts$title$subtitle,
               caption = opts$title$caption,
-              logo = list(logo),
+              logo = logo,
               titleStyle = elementStyles$titleStyle,
               subtitleStyle = elementStyles$subtitleStyle,
               captionStyle = elementStyles$captionStyle,

@@ -71,7 +71,8 @@ create_element_styles <- function(opts_theme = NULL){
                        "font-family:", opts_theme$table_title_family, ";",
                        "font-size:", opts_theme$table_title_size, "px;",
                        "font-weight:", opts_theme$table_title_weight, ";",
-                       "margin: 2px;")
+                       "margin: 2px;",
+                       "text-align: left;")
 
   subtitleStyle <- paste0("color:", opts_theme$table_subtitle_color, ";",
                           "font-family:", opts_theme$table_subtitle_family, ";",
@@ -79,14 +80,16 @@ create_element_styles <- function(opts_theme = NULL){
                           "font-weight:", opts_theme$table_subtitle_weight, ";",
                           "margin-left: 2px;",
                           "margin-top: 4px;",
-                          "margin-bottom: 25px;")
+                          "margin-bottom: 25px;",
+                          "text-align: left;")
 
   captionStyle <- paste0("color:", opts_theme$table_caption_color, ";",
                          "font-family:", opts_theme$table_caption_family, ";",
                          "font-size:", opts_theme$table_caption_size, "px;",
                          "font-weight:", opts_theme$table_caption_weight, ";",
                          "margin-left: 2px;",
-                         "margin-top: 10px;")
+                         "margin-top: 10px;",
+                         "text-align: left;")
 
   logoStyle <- get_logo_style(opts_theme = opts_theme)
 

@@ -23,7 +23,7 @@ create_rctbtheme <- function(opts_theme = NULL){
                 fontWeight = opts_theme$cell_text_weight,
                 color = opts_theme$cell_text_color)
 
-  reactable::reactableTheme(stripedColor = opts_theme$zebra_stripe2,
+  reactable::reactableTheme(stripedColor = opts_theme$zebra_stripe_color,
                             style = style,
                             headerStyle = headerStyle)
 

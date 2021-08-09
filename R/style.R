@@ -24,6 +24,7 @@ create_rctbtheme <- function(opts_theme = NULL){
                 color = opts_theme$cell_text_color)
 
   reactable::reactableTheme(stripedColor = opts_theme$zebra_stripe_color,
+                            backgroundColor = opts_theme$table_background,
                             style = style,
                             headerStyle = headerStyle)
 

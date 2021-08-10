@@ -21,7 +21,7 @@ get_logo_style <- function(opts_theme){
   logo_width <- opts_theme$logo_width
   logo_height <- opts_theme$logo_height
 
-  style <- 'float: right;margin-right:10px;'
+  style <- "float: right;margin-right:10px;margin-bottom:10px;"
   if(!is.null(logo_width)){
     style <- paste0(style, 'width:', logo_width, 'px;')
   }

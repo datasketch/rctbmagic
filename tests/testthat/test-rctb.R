@@ -12,7 +12,8 @@ test_that("rctb works without opts", {
   )
 
   expected_opts <- dsvizopts::merge_dsviz_options()
-  expected_theme <- list(stripedColor = expected_opts$theme$zebra_stripe_color,
+  expected_theme <- list(backgroundColor = expected_opts$theme$table_background,
+                         stripedColor = expected_opts$theme$zebra_stripe_color,
                          style = list(fontFamily = expected_opts$theme$cell_text_family,
                                       fontSize = expected_opts$theme$cell_text_size,
                                       fontWeight = expected_opts$theme$cell_text_weight,
@@ -65,7 +66,8 @@ test_that("rctb works with opts", {
   )
 
   expected_opts <- dsvizopts::merge_dsviz_options()
-  expected_theme <- list(stripedColor = "#ffffff",
+  expected_theme <- list(backgroundColor = expected_opts$theme$table_background,
+                         stripedColor = "#ffffff",
                          style = list(fontFamily = expected_opts$theme$cell_text_family,
                                       fontSize = expected_opts$theme$cell_text_size,
                                       fontWeight = expected_opts$theme$cell_text_weight,
@@ -102,6 +104,7 @@ test_that("rctb works with extra elements", {
 
   org_name <- "public"
   data <- data.frame(x = 1, y = "b", stringsAsFactors = FALSE)
+  # data <- sample_data("Cat-Num")
   opts <- dsthemer::dsthemer_get(org_name)
   opts$title <- 'a title'
   opts$subtitle <- 'a subtitle'
@@ -119,7 +122,8 @@ test_that("rctb works with extra elements", {
   )
 
   expected_opts <- dsvizopts::merge_dsviz_options()
-  expected_theme <- list(stripedColor = expected_opts$theme$zebra_stripe_color,
+  expected_theme <- list(backgroundColor = expected_opts$theme$table_background,
+                         stripedColor = expected_opts$theme$zebra_stripe_color,
                          style = list(fontFamily = expected_opts$theme$cell_text_family,
                                       fontSize = expected_opts$theme$cell_text_size,
                                       fontWeight = expected_opts$theme$cell_text_weight,
@@ -215,7 +219,7 @@ test_that("import google fonts", {
   tbl <- rctb(data)
 
   expected_import <- "@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans');"
-  import <- tbl$x$tag$children[[3]]$children[[1]]
+  import <- tbl$x$tag$children[[2]]$children[[1]]
 
   expect_equal(import, expected_import)
 
@@ -229,9 +233,9 @@ test_that("style tags", {
   elementStyles <- create_element_styles()
 
   expected_styles <- paste0(
-    "#reactable-title {",elementStyles$titleStyle,"} #reactable-subtitle {",elementStyles$subtitleStyle,"} #reactable-caption {",elementStyles$captionStyle,"} #reactable-logo img {",elementStyles$logoStyle,"}")
+    "body {background-color: #ffffff;} #reactable-title {",elementStyles$titleStyle,"} #reactable-subtitle {",elementStyles$subtitleStyle,"} #reactable-caption {",elementStyles$captionStyle,"} #reactable-logo img {",elementStyles$logoStyle,"}")
 
-  styles <- tbl$x$tag$children[[4]]$children[[1]]
+  styles <- tbl$x$tag$children[[3]]$children[[1]]
 
   expect_equal(styles, expected_styles)
 

@@ -60,7 +60,7 @@ rctb <- function(data, ...){
               subtitleStyle = elementStyles$subtitleStyle,
               captionStyle = elementStyles$captionStyle,
               logoStyle = elementStyles$logoStyle,
-              tableBackground = opts_theme$table_background,
+              backgroundStyle = elementStyles$backgroundStyle,
               googlefonts = list(fonts),
               opts_table,
               theme = list(rctbtheme))

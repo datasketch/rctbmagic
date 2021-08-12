@@ -22,7 +22,15 @@ test_that("rctb works without opts", {
                                             fontSize = expected_opts$theme$header_text_size,
                                             fontWeight = expected_opts$theme$header_text_weight,
                                             color = expected_opts$theme$header_text_color,
-                                            backgroundColor = expected_opts$theme$header_background))
+                                            backgroundColor = expected_opts$theme$header_background),
+                         inputStyle = list(backgroundColor = expected_opts$theme$table_background,
+                                           borderColor = expected_opts$theme$table_border_color),
+                         selectStyle = list(backgroundColor = expected_opts$theme$table_background,
+                                            borderColor = expected_opts$theme$table_border_color),
+                         pageButtonHoverStyle = list(backgroundColor = expected_opts$theme$table_background,
+                                                     borderColor = expected_opts$theme$table_border_color),
+                         pageButtonActiveStyle = list(backgroundColor = expected_opts$theme$table_background,
+                                                      borderColor = expected_opts$theme$table_border_color))
 
   class(expected_theme) <- "reactableTheme"
 
@@ -76,7 +84,15 @@ test_that("rctb works with opts", {
                                             fontSize = expected_opts$theme$header_text_size,
                                             fontWeight = expected_opts$theme$header_text_weight,
                                             color = expected_opts$theme$header_text_color,
-                                            backgroundColor = expected_opts$theme$header_background))
+                                            backgroundColor = expected_opts$theme$header_background),
+                         inputStyle = list(backgroundColor = expected_opts$theme$table_background,
+                                           borderColor = expected_opts$theme$table_border_color),
+                         selectStyle = list(backgroundColor = expected_opts$theme$table_background,
+                                            borderColor = expected_opts$theme$table_border_color),
+                         pageButtonHoverStyle = list(backgroundColor = expected_opts$theme$table_background,
+                                                     borderColor = expected_opts$theme$table_border_color),
+                         pageButtonActiveStyle = list(backgroundColor = expected_opts$theme$table_background,
+                                                      borderColor = expected_opts$theme$table_border_color))
 
   class(expected_theme) <- "reactableTheme"
 
@@ -131,7 +147,15 @@ test_that("rctb works with extra elements", {
                                             fontSize = expected_opts$theme$header_text_size,
                                             fontWeight = expected_opts$theme$header_text_weight,
                                             color = expected_opts$theme$header_text_color,
-                                            backgroundColor = expected_opts$theme$header_background))
+                                            backgroundColor = expected_opts$theme$header_background),
+                         inputStyle = list(backgroundColor = expected_opts$theme$table_background,
+                                           borderColor = expected_opts$theme$table_border_color),
+                         selectStyle = list(backgroundColor = expected_opts$theme$table_background,
+                                            borderColor = expected_opts$theme$table_border_color),
+                         pageButtonHoverStyle = list(backgroundColor = expected_opts$theme$table_background,
+                                                     borderColor = expected_opts$theme$table_border_color),
+                         pageButtonActiveStyle = list(backgroundColor = expected_opts$theme$table_background,
+                                                      borderColor = expected_opts$theme$table_border_color))
 
   class(expected_theme) <- "reactableTheme"
 
@@ -166,6 +190,10 @@ test_that("extra elements created correctly", {
   opts$title <- 'a title'
   opts$subtitle <- 'a subtitle'
   opts$caption <- 'a caption'
+
+  opts$showPageSizeOptions <- TRUE
+  opts$filterable <- TRUE
+  opts$searchable <- TRUE
 
   tbl <- do.call(rctb, list(data, opts))
   tbl

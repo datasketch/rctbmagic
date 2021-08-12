@@ -158,15 +158,14 @@ test_that("rctb works with extra elements", {
 
 test_that("extra elements created correctly", {
 
-  theme <- "light"
+  library(homodatum)
+  theme <- "dark"
   org_name <- "public"
-  data <- data.frame(x = 1, y = "b", stringsAsFactors = FALSE)
-  # data <- sample_data("Cat-Num")
+  data <- sample_data("Cat-Num")
   opts <- dsthemer::dsthemer_get(org_name, theme = theme)
   opts$title <- 'a title'
   opts$subtitle <- 'a subtitle'
   opts$caption <- 'a caption'
-  opts$logo <- org_name
 
   tbl <- do.call(rctb, list(data, opts))
   tbl
@@ -235,7 +234,7 @@ test_that("style tags", {
   elementStyles <- create_element_styles()
 
   expected_styles <- paste0(
-    ".reactable {background-color:#ffffff;padding-top:10px;padding-left:10px;padding-right:10px;padding-bottom: 10px;height: 100%;} #reactable-title {",elementStyles$titleStyle,"} #reactable-subtitle {",elementStyles$subtitleStyle,"} #reactable-caption {",elementStyles$captionStyle,"} #reactable-logo img {",elementStyles$logoStyle,"}")
+    ".reactable {background-color:#ffffff;padding-top:10px;padding-left:10px;padding-right:10px;padding-bottom: 10px;height: 100% !important;} #reactable-title {",elementStyles$titleStyle,"} #reactable-subtitle {",elementStyles$subtitleStyle,"} #reactable-caption {",elementStyles$captionStyle,"} #reactable-logo img {",elementStyles$logoStyle,"}")
 
   styles <- tbl$x$tag$children[[3]]$children[[1]]
 

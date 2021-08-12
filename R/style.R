@@ -26,7 +26,15 @@ create_rctbtheme <- function(opts_theme = NULL){
   reactable::reactableTheme(stripedColor = opts_theme$zebra_stripe_color,
                             backgroundColor = opts_theme$table_background,
                             style = style,
-                            headerStyle = headerStyle)
+                            headerStyle = headerStyle,
+                            inputStyle = list(backgroundColor = opts_theme$table_background,
+                                              borderColor = opts_theme$table_border_color),
+                            selectStyle = list(backgroundColor = opts_theme$table_background,
+                                               borderColor = opts_theme$table_border_color),
+                            pageButtonHoverStyle = list(backgroundColor = opts_theme$table_background,
+                                                        borderColor = opts_theme$table_border_color),
+                            pageButtonActiveStyle = list(backgroundColor = opts_theme$table_background,
+                                                         borderColor = opts_theme$table_border_color))
 
 }
 

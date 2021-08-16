@@ -40,6 +40,7 @@ rctb <- function(data, ...){
 
   logo <- NULL
   if(opts_theme$branding_include){
+    if(grepl("dsthemer", opts_theme$logo)) opts_theme$logo <- gsub("/.*", "", gsub(".*logos/","",opts_theme$logo))
     logo <- get_html_logo(opts_theme = opts_theme)
     logo <- list(logo)
   }
@@ -60,7 +61,7 @@ rctb <- function(data, ...){
               subtitleStyle = elementStyles$subtitleStyle,
               captionStyle = elementStyles$captionStyle,
               logoStyle = elementStyles$logoStyle,
-              tableBackground = opts_theme$table_background,
+              backgroundStyle = elementStyles$backgroundStyle,
               googlefonts = list(fonts),
               opts_table,
               theme = list(rctbtheme))

@@ -26,7 +26,15 @@ create_rctbtheme <- function(opts_theme = NULL){
   reactable::reactableTheme(stripedColor = opts_theme$zebra_stripe_color,
                             backgroundColor = opts_theme$table_background,
                             style = style,
-                            headerStyle = headerStyle)
+                            headerStyle = headerStyle,
+                            inputStyle = list(backgroundColor = opts_theme$table_background,
+                                              borderColor = opts_theme$table_border_color),
+                            selectStyle = list(backgroundColor = opts_theme$table_background,
+                                               borderColor = opts_theme$table_border_color),
+                            pageButtonHoverStyle = list(backgroundColor = opts_theme$table_background,
+                                                        borderColor = opts_theme$table_border_color),
+                            pageButtonActiveStyle = list(backgroundColor = opts_theme$table_background,
+                                                         borderColor = opts_theme$table_border_color))
 
 }
 
@@ -92,12 +100,27 @@ create_element_styles <- function(opts_theme = NULL){
                          "margin-top: 10px;",
                          "text-align: left;")
 
+  padding_bottom <- 10
+  if(opts_theme$branding_include){
+    padding_bottom <- opts_theme$logo_height + 10
+    if(is.null(padding_bottom)) padding_bottom <- 60
+  }
+
+  backgroundStyle <- paste0("background-color:",opts_theme$table_background,";",
+                            "padding-top:10px;",
+                            "padding-left:10px;",
+                            "padding-right:10px;",
+                            "padding-bottom: ",padding_bottom,"px;",
+                            "height: 100% !important;")
+
+
   logoStyle <- get_logo_style(opts_theme = opts_theme)
 
   list(titleStyle = titleStyle,
        subtitleStyle = subtitleStyle,
        captionStyle = captionStyle,
-       logoStyle = logoStyle)
+       logoStyle = logoStyle,
+       backgroundStyle = backgroundStyle)
 }
 
 

@@ -27,7 +27,7 @@ Remotes:
     datasketch/homodatum,
     datasketch/dsthemer,
     datasketch/paletero,
-    lenafm/reactable@30522e5469c9ac96ba4babd9fd3f08d16769901b
+    lenafm/reactable@8d49033c437bb06b203fd7296115e65d803747ee
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
